@@ -24,6 +24,14 @@ features_train, features_test, labels_train, labels_test = preprocess()
 
 #########################################################
 ### your code goes here ###
+from sklearn import svm
+# for n in range(1, 7):
+C = 10**4
+clf = svm.SVC(kernel='rbf',C=C).fit(features_train, labels_train)
+print(C, clf.score(features_test, labels_test))
+pred = clf.predict(features_test)
+for i in [10, 26, 50]:
+    print(i, pred[i])
 
 #########################################################
 
