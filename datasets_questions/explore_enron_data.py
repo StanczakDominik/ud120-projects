@@ -16,7 +16,14 @@
 """
 
 import pickle
-
+import math
+import sys
+sys.path.append("../tools/")
+import numpy as np
+from feature_format import featureFormat, targetFeatureSplit
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
+POIs = [person for person in enron_data if enron_data[person]["poi"]==1]
+for poi in POIs:
+    print(poi, math.log(enron_data[poi]['total_payments'], 10))
 
-
+data = featureFormat(['total_payments'], enron_data)

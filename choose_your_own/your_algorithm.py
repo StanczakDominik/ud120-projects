@@ -30,8 +30,12 @@ plt.show()
 
 ### your code here!  name your classifier object clf if you want the 
 ### visualization code (prettyPicture) to show you the decision boundary
+from sklearn import ensemble
 
+clf = ensemble.AdaBoostClassifier(learning_rate=10)
+clf.fit(features_train, labels_train)
 
+print(clf.score(features_test, labels_test))
 
 
 
@@ -41,4 +45,5 @@ plt.show()
 try:
     prettyPicture(clf, features_test, labels_test)
 except NameError:
+    print("nameerror")
     pass
